@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reasons You’re Amazing 🥹💓</title>
+    <style>
+        body {
+            background-color: #5a005a;
+    background-image: url(herr.png);
+    background-repeat: no-repeat;
+    background-size: contain; /* Ensures the whole image fits */
+    background-position: center center; /* Centers the image */
+    background-attachment: fixed;
+    font-family: cursive;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px #ff4080;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 20px;
+            text-shadow: 1px 1px 3px #ff4080;
+        }
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 15px;
+            width: 90%;
+            max-width: 1000px;
+            opacity: 0.85;
+        }
+        .reason {
+            background: #ff40a0;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .reason:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        #popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff0f5;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            display: none;
+            z-index: 1000;
+        }
+        #popup p {
+            font-size: 1.5em;
+            color: #5a005a;
+            margin-bottom: 20px;
+        }
+        #popup button {
+            background: #ff4080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.2s;
+        }
+        #popup button:hover {
+            background: #e02060;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reasons You’re Amazing</h1>
+    <div id="grid"></div>
+    <h2>Forever in My Heart ❤️</h2>
+    <h2>You're a sight to sore eyes, I love you so much💌</h2>
+
+    <div id="popup">
+        <p id="popupText"></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        const reasons = [
+            "You are my muse, the melody that makes my heart sing.",
+            "Every sunrise feels brighter because you’re in my world.",
+            "Your eyes hold galaxies I want to get lost in forever.",
+            "Your smile is the poetry my soul needed.",
+            "I’d choose you in every lifetime, without hesitation.",
+            "Your laughter is the symphony I never want to stop hearing.",
+            "You’ve turned my ordinary life into a masterpiece.",
+            "Every moment with you feels like a line from a perfect poem.",
+            "Your presence fills the cracks in my soul with light.",
+            "You are the rhythm my heartbeat dances to.",
+            "I could write endless sonnets, yet never capture your essence.",
+            "Your touch feels like home, no matter where we are.",
+            "You’ve painted my world in colors I didn’t know existed.",
+            "Loving you is the easiest thing my heart has ever done.",
+            "When I’m with you, time feels like an illusion.",
+            "Your voice is the lullaby my restless mind craves.",
+            "You are the calm in my chaos, the anchor to my wandering soul.",
+            "Your love is the light that guides me through every storm.",
+            "I see eternity in your eyes and hope in your smile.",
+            "You’ve given me reasons to believe in magic again.",
+            "You are the best chapter in my life story.",
+            "Every love song reminds me of you.",
+            "Your love feels like a warm hug on a cold day.",
+            "You make me a better version of myself just by being you.",
+            "Even the stars envy the sparkle in your eyes.",
+            "You’re the reason my soul dances to unseen melodies.",
+            "With you, the ordinary becomes extraordinary.",
+            "You’re not just my love; you’re my greatest adventure.",
+            "I am the luckiest person alive because I have you.",
+            "Your happiness is the most beautiful sight I’ve ever known.",
+            "If love were a language, you’d be my fluency.",
+            "In your arms, I’ve found the meaning of peace.",
+            "You’ve turned my scars into stories of strength and love.",
+            "Your love feels like sunlight after endless rain.",
+            "I carry you in my heart wherever I go.",
+            "The world feels more beautiful because you’re in it.",
+            "You are the poem my heart recites every day.",
+            "Your love is the treasure I’d search a thousand lifetimes for.",
+            "You’ve made me believe in miracles because you are one.",
+            "Every breath I take is a silent promise to cherish you forever.",
+            "You’ve turned my solitude into symphonies of togetherness.",
+            "I’d cross oceans just to see you smile.",
+            "With you, even silence feels like a conversation.",
+            "You’ve made my dreams sweeter and my reality brighter.",
+            "You are the echo of love that reverberates in my soul.",
+            "Every moment with you feels like an eternal spring.",
+            "Your love has healed wounds I didn’t know I had.",
+            "You are my favorite kind of forever.",
+            "My heart speaks your name in every beat.",
+            "You are not just the love of my life; you are my life’s greatest love."
+        ];
+
+        const grid = document.getElementById('grid');
+        reasons.forEach((reason, index) => {
+            const div = document.createElement('div');
+            div.className = 'reason';
+            div.textContent = `Reason ${index + 1}`;
+            div.onclick = () => showPopup(reason);
+            grid.appendChild(div);
+        });
+
+        function showPopup(reason) {
+            const popup = document.getElementById('popup');
+            const popupText = document.getElementById('popupText');
+            popupText.textContent = reason;
+            popup.style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
