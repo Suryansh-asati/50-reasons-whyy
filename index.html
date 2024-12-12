@@ -3,34 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reasons You’re Amazing 🥹💓</title>
+    <title>Reasons You’re Amazing 🥹💖</title>
     <style>
-       body {
-    background-color: #5a005a;
-    background-image: url('herr.png'); /* Default image */
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-    background-attachment: fixed;
-    font-family: cursive;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-    color: #ffffff;
-}
+        body {
+            background-color: #5a005a;
+            background-image: url('herr.png'); /* Default image */
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+            background-attachment: fixed;
+            font-family: cursive;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            color: #ffffff;
+        }
 
-/* Media query for screens smaller than 600px */
-@media (max-width: 600px) {
-    body {
-        background-image: url('her-p.png'); /* Replace with your smaller image */
-    }
-}
+        /* Media query for screens smaller than 600px */
+        @media (max-width: 600px) {
+            body {
+                background-image: url('her-p.png'); /* Replace with your smaller image */
+            }
 
+            #grid {
+                grid-template-columns: repeat(3, 1fr); /* Fewer columns for smaller screens */
+            }
+        }
 
         h1 {
             font-size: 3em;
@@ -44,7 +47,7 @@
         }
         #grid {
             display: grid;
-            grid-template-columns: repeat(10, 1fr);
+            grid-template-columns: repeat(10, 1fr); /* Default columns */
             gap: 15px;
             width: 90%;
             max-width: 1000px;
@@ -104,8 +107,8 @@
     <h1>Reasons You’re Amazing</h1>
     <h4>This is just the tip of the Iceberg, My love has just started</h4>
     <div id="grid"></div>
-    <h2>Forever in My Heart ❤️</h2>
-    <h2>You're a sight to sore eyes, I love you so much💌</h2>
+    <h2 class="2ndlast">Forever in My Heart ❤️</h2>
+    <h2 class="last">You're a sight to sore eyes, I love you so much📬</h2>
 
     <div id="popup">
         <p id="popupText"></p>
