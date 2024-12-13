@@ -18,11 +18,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             background-image: url(her-bg.png);
+            backgrund-size:cover;
+            background-position:center;
             color: var(--text-color);
             min-height: 100vh;
             display: flex;
@@ -111,6 +114,11 @@
             font-weight: 600;
             position: relative;
             overflow: hidden;
+            outline: none;
+        }
+        
+        .reason:focus {
+            outline: none; /* Ensure no focus outline */
         }
 
         .reason:hover {
@@ -198,8 +206,13 @@
             border-radius: 50%;
             cursor: pointer;
             transition: background 0.3s ease;
+            outline: none;
         }
 
+        .close-btn:focus{
+            outline:none;
+        }
+        
         .close-btn:hover {
             background: rgba(255,255,255,0.4);
         }
