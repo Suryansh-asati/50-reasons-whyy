@@ -3,116 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reasons You’re Amazing 🥹💖</title>
+    <title>Reasons I Love You 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #5a005a;
-            background-image: url('herr.png'); /* Default image */
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center center;
-            background-attachment: fixed;
-            font-family: cursive;
+        :root {
+            --primary-color: #ff4080;
+            --secondary-color: #5a005a;
+            --background-gradient: linear-gradient(135deg, #ff4080, #5a005a);
+            --text-color: #ffffff;
+            --heart-glow: #ff6b9e;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: url(her-bg.png);
+            color: var(--text-color);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            overflow: hidden;
-            color: #ffffff;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Media query for screens smaller than 600px */
-        @media (max-width: 600px) {
-            body {
-                background-image: url('her-p.png'); /* Replace with your smaller image */
-            }
-
-            #grid {
-                grid-template-columns: repeat(3, 1fr); /* Fewer columns for smaller screens */
-            }
+        /* Love-themed background particles */
+        .background-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.3;
         }
 
-        h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px #ff4080;
+        .heart {
+            position: absolute;
+            color: var(--heart-glow);
+            font-size: 20px;
+            animation: float-hearts linear infinite;
+            opacity: 0.5;
         }
-        h2 {
-            font-size: 1.8em;
-            margin-top: 20px;
-            text-shadow: 1px 1px 3px #ff4080;
+
+        @keyframes float-hearts {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
         }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 20px;
+            color: var(--text-color);
+            text-shadow: 2px 2px #ff4dcd;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: rgba(255,255,255);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 2px 2px #ff4dcd;
+        }
+
         #grid {
             display: grid;
-            grid-template-columns: repeat(10, 1fr); /* Default columns */
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap: 15px;
-            width: 90%;
+            width: 100%;
             max-width: 1000px;
-            opacity: 0.85;
+            margin: 0 auto 30px;
         }
+
         .reason {
-            background: #ff40a0;
+            background: rgba(255,64,128,0.8);
             color: white;
-            border-radius: 10px;
+            border-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 10px;
+            padding: 15px;
             cursor: pointer;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
         }
+
         .reason:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+            border-color: var(--text-color);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
+
+        .reason::before {
+            content: '❤️';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            font-size: 30px;
+            opacity: 0.2;
+            transition: opacity 0.3s ease;
+        }
+
+        .reason:hover::before {
+            opacity: 0.5;
+        }
+
+        .love-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .love-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--text-color);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px #ff4dcd;
+        }
+
         #popup {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #fff0f5;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
-            text-align: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
             display: none;
+            justify-content: center;
+            align-items: center;
             z-index: 1000;
+            padding: 20px;
         }
-        #popup p {
-            font-size: 1.5em;
-            color: #5a005a;
-            margin-bottom: 20px;
+
+        .popup-content {
+            background: linear-gradient(145deg, #ff4080, #5a005a);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.3s ease;
         }
-        #popup button {
-            background: #ff4080;
-            color: white;
+
+        .popup-content.show {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        #popupText {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            color: var(--text-color);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.2);
+            color: var(--text-color);
             border: none;
-            padding: 10px 20px;
-            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 1em;
-            transition: background 0.2s;
+            transition: background 0.3s ease;
         }
-        #popup button:hover {
-            background: #e02060;
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        @media (max-width: 600px) {
+            #grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            body {
+                background-image: url('her-p.png');
+                background-size:contain;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Reasons You’re Amazing</h1>
-    <h4>This is just the tip of the Iceberg, My love has just started</h4>
-    <div id="grid"></div>
-    <h2 class="2ndlast">Forever in My Heart ❤️</h2>
-    <h2 class="last">You're a sight to sore eyes, I love you so much📬</h2>
+    <div class="background-hearts"></div>
+    
+    <div class="container">
+        <h1 class="title">Reasons You're Amazing</h1>
+        <h4 class="subtitle">This is just the tip of the Iceberg, My love has just started</h4>
+        
+        <div id="grid"></div>
+        
+        <div class="love-section">
+            <h2>Forever in My Heart ❤️</h2>
+            <h2>You're a sight to sore eyes, I love you so much 📬</h2>
+        </div>
+    </div>
 
     <div id="popup">
-        <p id="popupText"></p>
-        <button onclick="closePopup()">Close</button>
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup()">✕</button>
+            <p id="popupText"></p>
+        </div>
     </div>
 
     <script>
@@ -170,6 +292,25 @@
         ];
 
         const grid = document.getElementById('grid');
+        const popup = document.getElementById('popup');
+        const popupContent = popup.querySelector('.popup-content');
+        const popupText = document.getElementById('popupText');
+
+        // Generate background hearts
+        function createHearts() {
+            const heartsContainer = document.querySelector('.background-hearts');
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Generate reason boxes
         reasons.forEach((reason, index) => {
             const div = document.createElement('div');
             div.className = 'reason';
@@ -179,15 +320,22 @@
         });
 
         function showPopup(reason) {
-            const popup = document.getElementById('popup');
-            const popupText = document.getElementById('popupText');
             popupText.textContent = reason;
-            popup.style.display = 'block';
+            popup.style.display = 'flex';
+            setTimeout(() => {
+                popupContent.classList.add('show');
+            }, 10);
         }
 
         function closePopup() {
-            document.getElementById('popup').style.display = 'none';
+            popupContent.classList.remove('show');
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 300);
         }
+
+        // Initialize hearts
+        createHearts();
     </script>
 </body>
 </html>
